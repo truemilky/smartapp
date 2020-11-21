@@ -1,0 +1,158 @@
+.button
+  &-prev,
+  &-next 
+    display: none  
+.features
+  padding-bottom: 100px
+  &__slider
+    display: none
+  &__heading 
+    text-align: center
+  &__title 
+    font-family: 'Roboto-Bold'
+    font-size: 36px
+    color: $gray-title
+    margin: 100px 10px 25px 10px
+  &__text 
+    font-family: 'Roboto-Regular'
+    font-size: 16px
+    line-height: 24px
+    color: $gray-text  
+    margin: 0 10px 62px 10px
+  &__icon 
+    width: 49px
+    height: 44px
+    fill: $gray-icon  
+    margin-right: 40px
+    &.active 
+      fill: $green
+  &__wrapper 
+    position: relative
+    display: flex
+    justify-content: space-between
+    align-items: center
+  &__item
+    display: flex
+    align-items: center
+    margin: 0 0 74px 42px
+    cursor: pointer
+    outline: none
+    &-title 
+      font-family: 'Roboto-Regular'
+      font-size: 20px
+      color: $gray-text  
+  &__separator 
+    position: absolute
+    top: -25px
+    left: 350px
+    width: 2px
+    height: 600px
+    background-color: $gray-line    
+  &__about
+    &-wrapper
+      position: absolute
+      right: 20px
+      top: 20px
+      opacity: 0
+      transform: translateX(100px)
+      &.active 
+        position: static
+        opacity: 1 
+        transform: translateX(0)
+        transition: all .3s
+
+    &-image 
+      text-align: center
+      & svg 
+        width: 204px
+        height: 171px
+        fill: $green 
+        margin-bottom: 70px
+    &-title 
+      font-family: 'Roboto-Bold'
+      font-size: 24px
+      color: $gray-title 
+      margin-bottom: 30px
+    &-text 
+      font-family: 'Roboto-Regular'
+      font-size: 16px
+      line-height: 24px
+      color: $gray-text   
+.heart-item
+  &::after 
+    content: ''
+    position: absolute
+    left: 345px
+    display: none
+    width: 11px
+    height: 80px
+    background-color: $green
+    z-index: 3  
+.briefcase-item
+  &::after 
+    content: ''
+    position: absolute
+    left: 345px
+    display: none
+    width: 11px
+    height: 80px
+    background-color: $green
+    z-index: 3
+.leaf-item
+  &::after 
+    content: ''
+    position: absolute
+    left: 345px
+    display: none
+    width: 11px
+    height: 80px
+    background-color: $green
+    z-index: 3
+.stream-item
+  &::after 
+    content: ''
+    position: absolute
+    left: 345px
+    display: none
+    width: 11px
+    height: 80px
+    background-color: $green
+    z-index: 3
+.umbrella-item
+  &::after 
+    content: ''
+    position: absolute
+    left: 345px
+    display: none
+    width: 11px
+    height: 80px
+    background-color: $green
+    z-index: 3
+.heart-item.active,
+.briefcase-item.active,
+.leaf-item.active,
+.stream-item.active,
+.umbrella-item.active
+  &::after   
+    display: block
+
+@media (max-width: 1050px)
+  .button
+    &-prev,
+    &-next 
+      display: block 
+  .features
+    &__slider
+      display: block
+      text-align: center
+      margin: 20px
+      &-wrapper 
+        outline: none
+    &__box 
+      position: relative
+    &__tabs
+      display: none
+    &__separator
+      display: none
+    &__about
+      display: none 

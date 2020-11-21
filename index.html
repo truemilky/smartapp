@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smallaps</title>
+  <link rel="stylesheet" href="css/vendor/slick.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <svg style="display: none;">
+    <symbol id="heart" viewBox="0 0 512 512">
+      <g>
+        <path d="M458.4 64.3C400.6 15.7 311.3 23 256 79.3 200.7 23 111.4 15.6 53.6 64.3-21.6 127.6-10.6 230.8 43 285.5l175.4 178.7c10 10.2 23.4 15.9 37.6 15.9 14.3 0 27.6-5.6 37.6-15.8L469 285.6c53.5-54.7 64.7-157.9-10.6-221.3zm-23.6 187.5L259.4 430.5c-2.4 2.4-4.4 2.4-6.8 0L77.2 251.8c-36.5-37.2-43.9-107.6 7.3-150.7 38.9-32.7 98.9-27.8 136.5 10.5l35 35.7 35-35.7c37.8-38.5 97.8-43.2 136.5-10.6 51.1 43.1 43.5 113.9 7.3 150.8z"/>
+      </g>
+    </symbol>
+
+    <symbol id="briefcase" viewBox="0 0 512 512">
+      <g>
+        <path d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z"/>
+      </g>
+    </symbol>
+
+    <symbol id="leaf" viewBox="0 0 576 512">
+      <g>
+        <path d="M546.2 9.7c-5.6-12.5-21.6-13-28.3-1.2C486.9 62.4 431.4 96 368 96h-80C182 96 96 182 96 288c0 7 .8 13.7 1.5 20.5C161.3 262.8 253.4 224 384 224c8.8 0 16 7.2 16 16s-7.2 16-16 16C132.6 256 26 410.1 2.4 468c-6.6 16.3 1.2 34.9 17.5 41.6 16.4 6.8 35-1.1 41.8-17.3 1.5-3.6 20.9-47.9 71.9-90.6 32.4 43.9 94 85.8 174.9 77.2C465.5 467.5 576 326.7 576 154.3c0-50.2-10.8-102.2-29.8-144.6z"/>
+      </g>
+    </symbol>
+
+    <symbol id="stream" viewBox="0 0 512 512">
+      <g>
+        <path d="M16 128h416c8.84 0 16-7.16 16-16V48c0-8.84-7.16-16-16-16H16C7.16 32 0 39.16 0 48v64c0 8.84 7.16 16 16 16zm480 80H80c-8.84 0-16 7.16-16 16v64c0 8.84 7.16 16 16 16h416c8.84 0 16-7.16 16-16v-64c0-8.84-7.16-16-16-16zm-64 176H16c-8.84 0-16 7.16-16 16v64c0 8.84 7.16 16 16 16h416c8.84 0 16-7.16 16-16v-64c0-8.84-7.16-16-16-16z"/>
+      </g>
+    </symbol>
+
+    <symbol id="umbrella" viewBox="0 0 576 512">
+      <g>
+        <path d="M575.7 280.8C547.1 144.5 437.3 62.6 320 49.9V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v17.9C138.3 62.6 29.5 144.5.3 280.8c-2.2 10.1 8.5 21.3 18.7 11.4 52-55 107.7-52.4 158.6 37 5.3 9.5 14.9 8.6 19.7 0 20.2-35.4 44.9-73.2 90.7-73.2 58.5 0 88.2 68.8 90.7 73.2 4.8 8.6 14.4 9.5 19.7 0 51-89.5 107.1-91.4 158.6-37 10.3 10 20.9-1.3 18.7-11.4zM256 301.7V432c0 8.8-7.2 16-16 16-7.8 0-13.2-5.3-15.1-10.7-5.9-16.7-24.1-25.4-40.8-19.5-16.7 5.9-25.4 24.2-19.5 40.8 11.2 31.9 41.6 53.3 75.4 53.3 44.1 0 80-35.9 80-80V301.6c-9.1-7.9-19.8-13.6-32-13.6-12.3.1-22.4 4.8-32 13.7z"/>
+      </g>
+    </symbol>
+
+    <symbol id="arrow-left" viewBox="0 0 320 512">
+      <g>
+        <path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"/>
+      </g>
+    </symbol>
+
+    <symbol id="arrow-right" viewBox="0 0 320 512">
+      <g>
+        <path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/>
+      </g>
+    </symbol >
+
+    <symbol id="envelope" viewBox="0 0 512 512">
+      <g>
+        <path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/>
+      </g>
+    </symbol>
+
+    <symbol id="facebook" viewBox="0 0 512 512">
+      <g>
+        <path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/>
+      </g>
+    </symbol>
+
+    <symbol id="twitter" viewBox="0 0 512 512">
+      <g>
+        <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/>
+      </g>
+    </symbol>
+
+    <symbol id="google" viewBox="0 0 488 512">
+      <g>
+        <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/>
+      </g>
+    </symbol>
+
+    <symbol id="pinterest" viewBox="0 0 496 512">
+      <g>
+        <path d="M496 256c0 137-111 248-248 248-25.6 0-50.2-3.9-73.4-11.1 10.1-16.5 25.2-43.5 30.8-65 3-11.6 15.4-59 15.4-59 8.1 15.4 31.7 28.5 56.8 28.5 74.8 0 128.7-68.8 128.7-154.3 0-81.9-66.9-143.2-152.9-143.2-107 0-163.9 71.8-163.9 150.1 0 36.4 19.4 81.7 50.3 96.1 4.7 2.2 7.2 1.2 8.3-3.3.8-3.4 5-20.3 6.9-28.1.6-2.5.3-4.7-1.7-7.1-10.1-12.5-18.3-35.3-18.3-56.6 0-54.7 41.4-107.6 112-107.6 60.9 0 103.6 41.5 103.6 100.9 0 67.1-33.9 113.6-78 113.6-24.3 0-42.6-20.1-36.7-44.8 7-29.5 20.5-61.3 20.5-82.6 0-19-10.2-34.9-31.4-34.9-24.9 0-44.9 25.7-44.9 60.2 0 22 7.4 36.8 7.4 36.8s-24.5 103.8-29 123.2c-5 21.4-3 51.6-.9 71.2C65.4 450.9 0 361.1 0 256 0 119 111 8 248 8s248 111 248 248z"/>
+      </g>
+    </symbol>
+
+    <symbol id="youtube" viewBox="0 0 576 512">
+      <g>
+        <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/>
+      </g>
+    </symbol>
+  </svg>
+  
+  <header class="header">
+    <div class="container">
+      <div class="header__box">
+        <div class="header__wrapper">
+          <div class="header__logo">
+            <a href="index.html">Smallapps</a>
+          </div><!--/header__logo-->
+          <div class="header__burger">
+            <span class="burger__span"></span>
+          </div><!--/header__burger-->
+        </div><!--/header__wrapper-->
+        <div class="header__inner">
+          <nav class="header__nav">
+            <ul class="header__menu">
+              <a href="index.html"><li class="header__list">Home</li></a>
+              <a href="#"><li class="header__list">Features</li></a>
+              <a href="#"><li class="header__list">Screenshot</li></a>
+              <a href="#"><li class="header__list">Gallery</li></a>
+            </ul><!--/header__menu-->
+            <div class="header__contacts">
+              <a href="tel:800-123-456"><div class="header__telephone">800-123-456</div></a>
+              <a href="#"><div class="header__mail">smallapps@gmail.com</div></a>
+            </div><!--/header__contacts-->
+          </nav><!--/header__nav-->
+        </div><!--/header__inner-->
+        <div class="header__burger-opened"></div>
+      </div><!--/header__box-->
+    </div><!--/container-->
+  </header>
+
+  <section class="intro">
+    <div class="container">
+      <div class="intro__info">
+        <div class="intro__title">Perfect app landing page</div>
+        <div class="intro__subtitle">Duis bibendum diam</div>
+        <div class="intro__text">
+          Donec elementum mollis magna id aliquet. Etiam eleifend urna eget sem<br> 
+          sagittis feugiat. Pellentesque habitant morbi tristique senectus et<br> 
+          netus et malesuada fames ac turpis egestas.
+        </div><!--/intro__text-->
+        <button type="button" class="button">Download</button>
+      </div><!--/intro__info-->
+      <div class="intro__image">
+        <img src="img/intro/hand.png" alt="">
+      </div><!--/intro__image-->
+    </div><!--/container-->
+  </section><!--/intro-->
+
+  <section class="features">
+    <div class="container">
+      <div class="features__heading">
+        <div class="features__title">Heading Feature title goes here</div>
+        <div class="features__text">
+          Duis bibendum diam non erat facilaisis tincidunt. Fusce leo neque, lacinia at tempor vitae, porta at arcu.<br> 
+          Vestibulum varius non dui at pulvinar. Ut egestas orci in quam sollicitudin aliquet. 
+        </div><!--/features__text-->
+      </div><!--/features__heading-->
+      <div class="features__wrapper">
+        <div class="features__tabs">
+          
+            <div class="features__item heart-item active">
+              <svg class="features__icon active">
+                <use xlink:href="#heart"></use>
+              </svg>
+              <div class="features__item-title">
+                Heading title one
+              </div><!--/features__item-title-->
+            </div><!--/features__item heart-item active--> 
+          
+            
+          
+            <div class="features__item briefcase-item">
+              <svg class="features__icon">
+                <use xlink:href="#briefcase"></use>
+              </svg>
+              <div class="features__item-title">
+                Heading title one
+              </div><!--/features__item-title-->
+            </div><!--/features__item briefcase-item-->
+          
+          
+          
+            <div class="features__item leaf-item">
+              <svg class="features__icon">
+                <use xlink:href="#leaf"></use>
+              </svg>
+              <div class="features__item-title">
+                Heading title one
+              </div><!--/features__item-title-->
+            </div><!--/features__item leaf-item-->
+          
+            
+          
+            <div class="features__item stream-item">
+              <svg class="features__icon">
+                <use xlink:href="#stream"></use>
+              </svg>
+              <div class="features__item-title">
+                Heading title one
+              </div><!--/features__item-title-->
+            </div><!--/features__item stream-item-->
+          
+            
+            
+            <div class="features__item umbrella-item">
+              <svg class="features__icon">
+                <use xlink:href="#umbrella"></use>
+              </svg>
+              <div class="features__item-title">
+                Heading title one
+              </div><!--/features__item-title-->
+            </div><!--/features__item umbrella-item-->
+          
+        </div><!--/features__tabs-->
+
+        <div class="features__separator"></div>
+        
+        <div class="features__about">
+          <div class="features__about-wrapper active" id="heart-item">
+            <div class="features__about-image">
+              <svg>
+                <use xlink:href="#heart"></use>
+              </svg>
+            </div><!--/features__about-image-->
+            <div class="features__about-title">Heading Feature title goes here</div>
+            <div class="features__about-text">
+              Nunc accumsan hendrerit nunc, ac venenatis magna facilisis quis. Ut sit amet mi ac<br>
+              neque sodales facilisis. Nullam tempus fermentum lorem nec interdum. Ut id orci id<br>
+              sapien imperdiet vehicula. Etiam quis dignissim ante. Donec convallis tincidunt ligula, ac<br>
+              luctus mi interdum a.
+            </div><!--/features__about-text-->
+          </div><!--/features__about-wrapper-->
+
+          <div class="features__about-wrapper" id="briefcase-item">
+            <div class="features__about-image">
+              <svg>
+                <use xlink:href="#briefcase"></use>
+              </svg>
+            </div><!--/features__about-image-->
+            <div class="features__about-title">Heading Feature title goes here</div>
+            <div class="features__about-text">
+              Nunc accumsan hendrerit nunc, ac venenatis magna facilisis quis. Ut sit amet mi ac<br>
+              neque sodales facilisis. Nullam tempus fermentum lorem nec interdum. Ut id orci id<br>
+              sapien imperdiet vehicula. Etiam quis dignissim ante. Donec convallis tincidunt ligula, ac<br>
+              luctus mi interdum a.
+            </div><!--/features__about-text-->
+          </div><!--/features__about-wrapper-->
+
+          <div class="features__about-wrapper" id="leaf-item">
+            <div class="features__about-image">
+              <svg>
+                <use xlink:href="#leaf"></use>
+              </svg>
+            </div><!--/features__about-image-->
+            <div class="features__about-title">Heading Feature title goes here</div>
+            <div class="features__about-text">
+              Nunc accumsan hendrerit nunc, ac venenatis magna facilisis quis. Ut sit amet mi ac<br>
+              neque sodales facilisis. Nullam tempus fermentum lorem nec interdum. Ut id orci id<br>
+              sapien imperdiet vehicula. Etiam quis dignissim ante. Donec convallis tincidunt ligula, ac<br>
+              luctus mi interdum a.
+            </div><!--/features__about-text-->
+          </div><!--/features__about-wrapper-->
+
+          <div class="features__about-wrapper" id="stream-item">
+            <div class="features__about-image">
+              <svg>
+                <use xlink:href="#stream"></use>
+              </svg>
+            </div><!--/features__about-image-->
+            <div class="features__about-title">Heading Feature title goes here</div>
+            <div class="features__about-text">
+              Nunc accumsan hendrerit nunc, ac venenatis magna facilisis quis. Ut sit amet mi ac<br>
+              neque sodales facilisis. Nullam tempus fermentum lorem nec interdum. Ut id orci id<br>
+              sapien imperdiet vehicula. Etiam quis dignissim ante. Donec convallis tincidunt ligula, ac<br>
+              luctus mi interdum a.
+            </div><!--/features__about-text-->
+          </div><!--/features__about-wrapper-->
+
+          <div class="features__about-wrapper" id="umbrella-item">
+            <div class="features__about-image">
+              <svg>
+                <use xlink:href="#umbrella"></use>
+              </svg>
+            </div><!--/features__about-image-->
+            <div class="features__about-title">Heading Feature title goes here</div>
+            <div class="features__about-text">
+              Nunc accumsan hendrerit nunc, ac venenatis magna facilisis quis. Ut sit amet mi ac<br>
+              neque sodales facilisis. Nullam tempus fermentum lorem nec interdum. Ut id orci id<br>
+              sapien imperdiet vehicula. Etiam quis dignissim ante. Donec convallis tincidunt ligula, ac<br>
+              luctus mi interdum a.
+            </div><!--/features__about-text-->
+          </div><!--/features__about-wrapper-->
+        </div><!--/features__about-->
+      </div><!--/features__wrapper-->
+        
+      <div class="features__box">
+        <div class="button-prev">
+          <svg class="arrow-left">
+            <use xlink:href="#arrow-left"></use>
+          </svg>
+        </div><!--/features__button-prev-->
+
+        <div class="button-next">
+          <svg class="arrow-right">
+            <use xlink:href="#arrow-right"></use>
+          </svg>
+        </div><!--/features__button-next-->
+
+        <div class="features__slider">
+          <div class="features__slider-wrapper">
+            <div class="features__about-image">
+              <svg>
+                <use xlink:href="#heart"></use>
+              </svg>
+            </div><!--/features__about-image-->
+            <div class="features__about-title">Heading Feature title goes here</div>
+            <div class="features__about-text">
+              Nunc accumsan hendrerit nunc, ac venenatis magna facilisis quis. Ut sit amet mi ac<br>
+              neque sodales facilisis. Nullam tempus fermentum lorem nec interdum. Ut id orci id<br>
+              sapien imperdiet vehicula. Etiam quis dignissim ante. Donec convallis tincidunt ligula, ac<br>
+              luctus mi interdum a.
+            </div><!--/features__about-text-->
+          </div><!--/features__slider-wrapper-->
+
+          <div class="features__slider-wrapper">
+            <div class="features__about-image">
+              <svg>
+                <use xlink:href="#briefcase"></use>
+              </svg>
+            </div><!--/features__about-image-->
+            <div class="features__about-title">Heading Feature title goes here</div>
+            <div class="features__about-text">
+              Nunc accumsan hendrerit nunc, ac venenatis magna facilisis quis. Ut sit amet mi ac<br>
+              neque sodales facilisis. Nullam tempus fermentum lorem nec interdum. Ut id orci id<br>
+              sapien imperdiet vehicula. Etiam quis dignissim ante. Donec convallis tincidunt ligula, ac<br>
+              luctus mi interdum a.
+            </div><!--/features__about-text-->
+          </div><!--/features__slider-wrapper-->
+
+          <div class="features__slider-wrapper">
+            <div class="features__about-image">
+              <svg>
+                <use xlink:href="#leaf"></use>
+              </svg>
+            </div><!--/features__about-image-->
+            <div class="features__about-title">Heading Feature title goes here</div>
+            <div class="features__about-text">
+              Nunc accumsan hendrerit nunc, ac venenatis magna facilisis quis. Ut sit amet mi ac<br>
+              neque sodales facilisis. Nullam tempus fermentum lorem nec interdum. Ut id orci id<br>
+              sapien imperdiet vehicula. Etiam quis dignissim ante. Donec convallis tincidunt ligula, ac<br>
+              luctus mi interdum a.
+            </div><!--/features__about-text-->
+          </div><!--/features__slider-wrapper-->
+
+          <div class="features__slider-wrapper">
+            <div class="features__about-image">
+              <svg>
+                <use xlink:href="#stream"></use>
+              </svg>
+            </div><!--/features__about-image-->
+            <div class="features__about-title">Heading Feature title goes here</div>
+            <div class="features__about-text">
+              Nunc accumsan hendrerit nunc, ac venenatis magna facilisis quis. Ut sit amet mi ac<br>
+              neque sodales facilisis. Nullam tempus fermentum lorem nec interdum. Ut id orci id<br>
+              sapien imperdiet vehicula. Etiam quis dignissim ante. Donec convallis tincidunt ligula, ac<br>
+              luctus mi interdum a.
+            </div><!--/features__about-text-->
+          </div><!--/features__slider-wrapper-->
+
+          <div class="features__slider-wrapper">
+            <div class="features__about-image">
+              <svg>
+                <use xlink:href="#umbrella"></use>
+              </svg>
+            </div><!--/features__about-image-->
+            <div class="features__about-title">Heading Feature title goes here</div>
+            <div class="features__about-text">
+              Nunc accumsan hendrerit nunc, ac venenatis magna facilisis quis. Ut sit amet mi ac<br>
+              neque sodales facilisis. Nullam tempus fermentum lorem nec interdum. Ut id orci id<br>
+              sapien imperdiet vehicula. Etiam quis dignissim ante. Donec convallis tincidunt ligula, ac<br>
+              luctus mi interdum a.
+            </div><!--/features__about-text-->
+          </div><!--/features__slider-wrapper-->
+        </div><!--/features__slider-->
+      </div>  
+    </div><!--/container-->
+  </section><!--/features-->
+
+  <section class="more">
+    <div class="container">
+      <div class="more__wrapper">
+        <div class="more__info">
+          <div class="more__title">
+            Onec ultrices ultricies tellus<br>
+            perfect screens here
+          </div>
+          <div class="more__devider"></div>
+          <div class="more__subtitle">
+            Duis bibendum diam non<br>
+            erat facilisis tincidunt.
+          </div>
+          <div class="more__text">
+            Duis bibendum diam non erat facilaisis tincidunt. Fusce leo<br>
+            neque, lacinia at tempor vitae, porta at arcu. Vestibulum<br>
+            varius non dui at pulvinar. Ut egestas orci in quam<br>
+            sollicitudin aliquet. 
+          </div><!--/more__text-->
+          <button class="button button__more">learn more</button>
+        </div><!--/more__info-->
+
+        <div class="more__image">
+          <img src="img/more/mobile.png" alt="Mobile Phone">
+        </div><!--/more__image-->
+      </div><!--/more__wrapper-->
+    </div><!--/container-->
+  </section><!--/more-->
+
+  <section class="gallery">
+    <div class="container">
+      <div class="gallery__heading">
+        <div class="gallery__heading-title">
+          Our Latest screenshots gallery
+        </div><!--/gallery__heading-title-->
+        <div class="gallery__heading-text">
+          Duis bibendum diam non erat facilaisis tincidunt. Fusce leo neque, lacinia at tempor vitae, porta at arcu.<br>
+          Vestibulum varius non dui at pulvinar. Ut egestas orci in quam sollicitudin aliquet. 
+        </div><!--/gallery__heading-text-->
+      </div><!--/gallery__heading--> 
+
+      
+      <div class="gallery__box">
+        <div class="gallery-prev" id="gallery-prev">
+          <svg class="arrow-left">
+            <use xlink:href="#arrow-left"></use>
+          </svg>
+        </div><!--/features__button-prev-->
+
+        <div class="gallery-next" id="gallery-next">
+          <svg class="arrow-right"> class="gallery__img"
+            <use xlink:href="#arrow-right"></use>
+          </svg>
+        </div><!--/features__button-next-->
+
+        <div class="gallery__slider">
+          <div class="gallery__item">
+            <div class="gallery__item-image">
+              <img class="gallery__img" src="img/gallery/mobile.png" alt="Mobile Phone">
+            </div>
+            <div class="gallery__item-text">
+              Duis bibendum diam non erat facilaisis<br> 
+              tincidunt. Fusce leo neque, lacinia at<br> 
+              tempor vitae, porta at arcu.
+            </div>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__item-image">
+              <img class="gallery__img" src="img/gallery/mobile.png" alt="Mobile Phone">
+            </div>
+            <div class="gallery__item-text">
+              Duis bibendum diam non erat facilaisis<br> 
+              tincidunt. Fusce leo neque, lacinia at<br> 
+              tempor vitae, porta at arcu.
+            </div>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__item-image">
+              <img class="gallery__img" src="img/gallery/mobile.png" alt="Mobile Phone">
+            </div>
+            <div class="gallery__item-text">
+              Duis bibendum diam non erat facilaisis<br> 
+              tincidunt. Fusce leo neque, lacinia at<br> 
+              tempor vitae, porta at arcu.
+            </div>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__item-image">
+              <img class="gallery__img" src="img/gallery/mobile.png" alt="Mobile Phone">
+            </div>
+            <div class="gallery__item-text">
+              Duis bibendum diam non erat facilaisis<br> 
+              tincidunt. Fusce leo neque, lacinia at<br> 
+              tempor vitae, porta at arcu.
+            </div>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__item-image">
+              <img class="gallery__img" src="img/gallery/mobile.png" alt="Mobile Phone">
+            </div>
+            <div class="gallery__item-text">
+              Duis bibendum diam non erat facilaisis<br> 
+              tincidunt. Fusce leo neque, lacinia at<br> 
+              tempor vitae, porta at arcu.
+            </div>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__item-image">
+              <img class="gallery__img" src="img/gallery/mobile.png" alt="Mobile Phone">
+            </div>
+            <div class="gallery__item-text">
+              Duis bibendum diam non erat facilaisis<br> 
+              tincidunt. Fusce leo neque, lacinia at<br> 
+              tempor vitae, porta at arcu.
+            </div><!--/gallery__item-text-->
+          </div><!--/gallery__item-->
+        </div><!--/slider-->
+      </div><!--/gallery__box-->
+    </div><!--/container-->
+  </section><!--/gallery-->
+
+  <section class="product">
+    <div class="container">
+      <div class="product__inner">
+        <div class="product__image">
+          <img src="img/product/phones.png" alt="Mobile Phones">
+        </div>
+        <div class="product__info">
+          <div class="product__title">
+            Onec ultrices ultricies tellus<br>
+            perfect screens here
+          </div>
+          <div class="product__devider"></div>
+          <div class="product__subtitle">
+            Duis bibendum diam non<br>
+            erat facilisis tincidunt.
+          </div>
+          <div class="product__text">
+            Duis bibendum diam non erat facilaisis tincidunt. Fusce leo<br>
+            neque, lacinia at tempor vitae, porta at arcu. Vestibulum<br>
+            varius non dui at pulvinar. Ut egestas orci in quam<br>
+            sollicitudin aliquet. 
+          </div><!--/more__text-->
+          <button class="button button__more">learn more</button>
+        </div><!--/more__info-->
+        </div><!--/product__info-->
+      </div><!--/product__inner-->
+    </div><!--/container-->
+  </section><!--/product-->
+
+  <section class="testimonials">
+    <div class="container">
+      <div class="testimonials__title">
+        What people say about us
+      </div>
+      <div class="testimonials__slider">
+        <div class="testimonials__item">
+          <div class="testimonials__avatar">
+            <img src="img/testimonials/user.png" alt="User">
+          </div>
+          <div class="testimonials__quote">
+            “ It’s official – I love this app, I couldn’t be without it now.”
+          </div>
+          <div class="testimonials__name">- Ron Burgundy</div>
+        </div>
+        <div class="testimonials__item">
+          <div class="testimonials__avatar">
+            <img src="img/testimonials/user.png" alt="User">
+          </div>
+          <div class="testimonials__quote">
+            “ It’s official – I love this app, I couldn’t be without it now.”
+          </div>
+          <div class="testimonials__name">- Ron Burgundy</div>
+        </div>
+        <div class="testimonials__item">
+          <div class="testimonials__avatar">
+            <img src="img/testimonials/user.png" alt="User">
+          </div>
+          <div class="testimonials__quote">
+            “ It’s official – I love this app, I couldn’t be without it now.”
+          </div>
+          <div class="testimonials__name">- Ron Burgundy</div>
+        </div><!--/testimonials__item-->
+      </div><!--/testimonials__slider-->
+    </div><!--/container-->
+  </section><!--/testimonials-->
+
+  <section class="subscribe">
+    <div class="container">
+      <div class="subscribe__heading">
+        <svg class="subscribe__image">
+          <use xlink:href="#envelope"></use>
+        </svg>
+        <div class="subscribe__title">
+          Subscribe our Newsletter
+        </div><!--/subscribe__title-->
+      </div><!--/subscribe__heading-->
+      
+      <div class="subscribe__wrapper">
+        <input type="email" name="email" id="mail" placeholder="your email address">
+        <button class="button button__subscribe">submit</button>
+      </div>
+        
+    </div><!--/container-->
+  </section><!--/subscribe-->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__title">
+          Say Hi, Get In Touch
+        </div>
+        <div class="footer__socials">
+          <a href="#">
+            <svg class="footer__image">
+              <use xlink:href="#facebook"></use>
+            </svg>
+          </a>
+          <a href="#">
+            <svg class="footer__image">
+              <use xlink:href="#twitter"></use>
+            </svg>
+          </a>  
+          <a href="#">
+            <svg class="footer__image">
+              <use xlink:href="#google"></use>
+            </svg>
+          </a>  
+          <a href="#">
+            <svg class="footer__image">
+              <use xlink:href="#pinterest"></use>
+            </svg>
+          </a>  
+          <a href="#">
+            <svg class="footer__image">
+              <use xlink:href="#youtube"></use>
+            </svg>
+          </a>  
+        </div>
+        <ul class="footer__nav">
+          <li class="footer__menu"><a href="#">Contact</a></li>
+          <li class="footer__menu"><a href="#">Twitter</a></li>
+          <li class="footer__menu"><a href="#">Press</a></li>
+          <li class="footer__menu"><a href="#">Support</a></li>
+          <li class="footer__menu"><a href="#">Developers</a></li>
+          <li class="footer__menu"><a href="#">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/slick.min.js"></script>
+  <script src="js/burger.js"></script>
+  <script src="js/features.js"></script>
+  <script src="js/slick.js"></script>
+</body>
+</html>

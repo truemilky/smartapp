@@ -1,0 +1,43 @@
+.footer
+  padding: 70px 0px 50px 0px 
+  background-color: $footer-bg
+  &__title 
+    font-family: 'Roboto-Regular'
+    font-size: 24px
+    color: $gray-title
+    margin-bottom: 30px
+  &__inner 
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+  &__nav 
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    list-style: none
+  &__menu 
+    & a
+    font-family: 'Roboto-Regular'
+    font-size: 14px
+    color: $gray-title
+    padding: 15px  
+    &:hover
+      color: $white
+  &__socials 
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    align-items: center
+    margin-bottom: 60px
+  &__image 
+    width: 42px
+    height: 42px
+    fill: $social
+    margin: 0px 17px 20px
+    &:hover 
+      fill: $red
+      transition: .3s ease all
+@media (max-width: 572px)
+  .footer 
+    &__socials 

@@ -1,0 +1,94 @@
+.button 
+  font-family: 'Roboto-Bold'
+  font-size: 21px
+  text-transform: uppercase
+  color: $white
+  background-color: transparent 
+  border: 3px solid $blue-light
+  border-radius: 35px
+  padding: 19px 59px
+  cursor: pointer
+  outline: none
+  &:hover 
+    color: $black
+    background-color: $blue-light
+    transition: .3s ease all
+  &__more 
+    border-color: $gray-text  
+    color: $gray-title
+    &:hover 
+      background-color: $gray-text
+  &-prev
+    position: absolute
+    top: 50%
+    left: 20px
+    width: 34px
+    height: 34px
+    fill: $gray-icon
+    margin-left: 20px 
+    z-index: 5
+  &-next 
+    position: absolute
+    top: 50%
+    right: 20px
+    width: 34px
+    height: 34px
+    fill: $gray-icon
+    margin-left: 20px 
+    z-index: 5   
+  &__subscribe 
+    height: 60px
+    position: absolute
+    top: 0
+    right: 170px
+    font-size: 20px
+    line-height: 24px
+    vertical-align: middle
+    background-color: $green 
+    border-color: $green
+    padding: 0px 48px 0px
+    &:hover 
+      background-color: $red
+      border-color: $red  
+.arrow 
+  &-left 
+    width: 34px 
+    height: 34px
+    cursor: pointer
+    &:hover 
+      fill: $green 
+  &-right 
+    width: 34px 
+    height: 34px
+    cursor: pointer 
+    &:hover 
+      fill: $green 
+.slick
+  &-dots
+    display: flex
+    justify-content: center
+    list-style: none
+    & button 
+      width: 11px
+      height: 11px
+      border: 0
+      border-radius: 100%
+      font-size: 0
+      color: transparent 
+      background-color: $gray-icon
+      outline: none
+      margin: 0px 10px
+li 
+  &.slick-active 
+    & button 
+      background-color: $green   
+@media (max-width: 768px)
+  .button
+    &__subscribe 
+      right: 25px    
+@media (max-width: 572px)
+  .button
+    &__subscribe 
+      position: static
+      display: block
+      margin: 0 auto          

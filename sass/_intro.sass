@@ -1,0 +1,40 @@
+.intro 
+  position: relative
+  background: url('../img/intro/bg.jpg') center/cover no-repeat
+  padding: 177px 0 257px 0
+  &__info 
+    position: relative
+    z-index: 2
+  &__image 
+    position: absolute
+    bottom: 0
+    right: 89.500px
+    z-index: 1
+  &__title 
+    font-family: 'Roboto-Bold' 
+    font-size: 36px
+    color: $white
+  &__subtitle
+    font-family: 'Roboto-Thin'
+    font-size: 36px
+    color: $white  
+    margin-bottom: 35px
+  &__text 
+    font-family: 'Roboto-Regular'
+    font-size: 14px
+    line-height: 24px 
+    color: $blue-light
+    margin-bottom: 54px
+@media (max-width: 1200px)
+  .intro 
+    &__info 
+      margin: 20px 
+@media (max-width: 768px)
+  .intro 
+    padding: 75px 0 75px 0
+    &__text 
+      color: $white
+@media (max-width: 472px)
+  .intro 
+    &__info 
+      text-align: center       

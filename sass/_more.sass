@@ -1,0 +1,51 @@
+.more 
+  background-color: #f2f9fe
+  &__wrapper 
+    position: relative
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 157px 0 190px 0
+  &__image 
+    position: absolute
+    right: 140px
+    & img 
+      display: block
+  &__title 
+    font-family: 'Roboto-Bold'
+    font-size: 36px
+    color: $green 
+    margin-bottom: 18px
+  &__devider 
+    display: block
+    width: 104px
+    height: 2px
+    background-color: $gray-icon
+    margin-bottom: 35px
+  &__subtitle 
+    font-family: 'Roboto-Regular'
+    font-size: 36px
+    color: $gray-light  
+    margin-bottom: 45px
+  &__text 
+    font-family: 'Roboto-Regular'
+    font-size: 16px
+    line-height: 24px
+    color: $gray-icon
+    margin-bottom: 50px  
+
+
+@media (max-width: 1200px)
+  .more
+    &__info
+      margin-left: 20px  
+@media (max-width: 962px)
+  .more 
+    &__wrapper 
+      flex-direction: column-reverse
+      padding: 50px 0
+    &__image 
+      position: static
+      margin-bottom: 35px
+
+

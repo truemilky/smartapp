@@ -1,0 +1,54 @@
+.subscribe 
+  background-color: $gray-bg
+  padding: 90px 0px 120px 0px
+  &__heading
+    display: flex
+    justify-content: center
+    align-items: center
+    text-align: center
+    margin: 0px 15px 55px 15px
+  &__image 
+    width: 39px
+    height: 33px
+    fill: $gray-icon
+  &__title 
+    font-family: 'Roboto-Bold'
+    font-size: 36px
+    color: $gray-title
+    margin-left: 20px  
+  &__wrapper
+    position: relative 
+input[type="email"]
+  display: block
+  width: 66.66666%
+  height: 60px
+  border: 2px solid $gray-icon
+  border-radius: 50px 
+  font-family: 'Roboto-Bold'
+  font-size: 14px
+  color: $gray-text   
+  outline: none
+  ovelflow: hidden
+  margin: 0 auto
+  padding-left: 30px 
+  padding-right: 180px
+  margin-bottom: 20px
+@media (max-width: 1024px)
+  .subscribe 
+    &__wrapper 
+      display: block  
+@media (max-width: 768px)
+  input[type="email"] 
+    width: 90%  
+@media (max-width: 572px)
+  input[type="email"] 
+    padding-right: 20px
+    padding-left: 20px
+  .subscribe 
+    padding: 20px
+    &__heading 
+      display: block
+    &__image 
+      width: 60px
+      height: 60px  
+
