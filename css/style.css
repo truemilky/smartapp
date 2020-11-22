@@ -993,7 +993,7 @@ input[type="email"] {
   width: 34px;
   height: 34px;
   fill: #9fa9a9;
-  margin-left: 20px;
+  margin-right: 20px;
   z-index: 5;
 }
 .button__subscribe {
@@ -1067,10 +1067,10 @@ li.slick-active button {
     right: 25px;
   }
   .button-prev {
-    top: 70px;
+    top: 110px;
   }
   .button-next {
-    top: 70px;
+    top: 110px;
   }
 }
 @media (max-width: 572px) {
