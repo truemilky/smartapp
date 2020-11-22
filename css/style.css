@@ -188,12 +188,12 @@ a {
     width: 100%;
     height: 100%;
     background-color: #e4e4e4;
-    z-index: 2;
+    z-index: 10;
   }
   .header__wrapper {
     width: 100%;
     position: fixed;
-    z-index: 3;
+    z-index: 11;
     top: 0;
     left: 0;
     background-color: #fff;
@@ -204,7 +204,7 @@ a {
     left: 0px;
     width: 30px;
     height: 20px;
-    z-index: 4;
+    z-index: 11;
     margin-right: 20px;
     -webkit-transition: 0.4s all;
     transition: 0.4s all;
@@ -246,7 +246,7 @@ a {
     display: block;
     position: fixed;
     top: 60px;
-    z-index: 2;
+    z-index: 11;
     margin: 0;
   }
   .header__logo {
@@ -458,6 +458,7 @@ a {
   font-size: 24px;
   color: #636c6c;
   margin-bottom: 30px;
+  padding: 15px;
 }
 .features__about-text {
   font-family: "Roboto-Regular";
@@ -553,6 +554,14 @@ a {
   }
   .features__about {
     display: none;
+  }
+}
+@media (max-width: 778px) {
+  .features__text {
+    margin-bottom: 10px;
+  }
+  .features__about-image svg {
+    margin-bottom: 10px;
   }
 }
 .more {
@@ -1050,6 +1059,13 @@ li.slick-active button {
 }
 
 @media (max-width: 768px) {
+  .button {
+    background-color: #9dc7d1;
+  }
+  .button:hover {
+    border-color: #eb6c6c;
+    background-color: #eb6c6c;
+  }
   .button__subscribe {
     right: 25px;
   }
