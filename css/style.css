@@ -614,11 +614,6 @@ a {
   margin-bottom: 50px;
 }
 
-@media (max-width: 1200px) {
-  .more__info {
-    margin-left: 20px;
-  }
-}
 @media (max-width: 962px) {
   .more__wrapper {
     -webkit-box-orient: vertical;
@@ -626,7 +621,7 @@ a {
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
     text-align: center;
-    padding: 50px 0;
+    padding: 50px 20px;
   }
   .more__image {
     position: static;
@@ -1008,8 +1003,8 @@ input[type="email"] {
   font-size: 20px;
   line-height: 24px;
   vertical-align: middle;
-  background-color: #5dca88;
-  border-color: #5dca88;
+  background-color: #9dc7d1;
+  border-color: #9dc7d1;
   padding: 0px 48px 0px;
 }
 .button__subscribe:hover {
