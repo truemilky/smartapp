@@ -969,11 +969,12 @@ input[type="email"] {
   transition: 0.3s ease all;
 }
 .button__more {
-  border-color: #afb8b8;
-  color: #636c6c;
+  border-color: #9dc7d1;
+  color: #9dc7d1;
 }
 .button__more:hover {
-  background-color: #afb8b8;
+  background-color: #eb6c6c;
+  border-color: #eb6c6c;
 }
 .button-prev {
   position: absolute;
