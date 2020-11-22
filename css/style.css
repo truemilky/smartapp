@@ -1066,6 +1066,12 @@ li.slick-active button {
   .button__subscribe {
     right: 25px;
   }
+  .button-prev {
+    top: 70px;
+  }
+  .button-next {
+    top: 70px;
+  }
 }
 @media (max-width: 572px) {
   .button__subscribe {
