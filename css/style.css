@@ -970,7 +970,7 @@ input[type="email"] {
 }
 .button__more {
   border-color: #9dc7d1;
-  color: #9dc7d1;
+  background-color: #9dc7d1;
 }
 .button__more:hover {
   background-color: #eb6c6c;
