@@ -54,11 +54,9 @@
       right: 20px
       top: 20px
       opacity: 0
-      transform: translateX(100px)
       &.active 
         position: static
         opacity: 1 
-        transform: translateX(0)
         transition: all .3s
 
     &-image 
@@ -78,7 +76,8 @@
       font-family: 'Roboto-Regular'
       font-size: 16px
       line-height: 24px
-      color: $gray-text   
+      color: $gray-text 
+      padding: 15px  
 .heart-item
   &::after 
     content: ''
